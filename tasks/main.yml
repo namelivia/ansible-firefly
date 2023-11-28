@@ -54,7 +54,7 @@
       - "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/files/upload:/var/www/html/storage/upload"
     env:
       APP_KEY: "{{ app_key }}"
-      DB_CONNECTION: "psql"
+      DB_CONNECTION: "pgsql"
       DB_HOST: "{{ database_container_name }}"
       DB_PORT: "5432"
       DB_DATABASE: "{{ database_name }}"
