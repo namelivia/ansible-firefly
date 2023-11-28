@@ -33,8 +33,6 @@
     path: "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/files/data"
     state: directory
     mode: 0755
-    owner: "{{ user }}"
-    group: "{{ group }}"
 
 - name: Create app container
   docker_container:
