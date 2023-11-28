@@ -20,19 +20,19 @@
   file:
     path: "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/files"
     state: directory
-    mode: 0755
+    mode: "0755"
 
 - name: Create the upload directory
   file:
     path: "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/files/upload"
     state: directory
-    mode: 0755
+    mode: "0755"
 
 - name: Create the data directory
   file:
     path: "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/files/data"
     state: directory
-    mode: 0755
+    mode: "0755"
 
 - name: Create app container
   docker_container:
@@ -61,12 +61,11 @@
       DB_USERNAME: "{{ database_user }}"
       DB_PASSWORD: "{{ database_password }}"
       TZ: "Europe/Madrid"
-      TRUSTED_PROXIES: "**"
-      USE_PROXIES: "127.0.0.1"
+      DISABLE_CSP_HEADER: "true" # Not ideal
 
 # Restart the container so the configuration changes are picked up
 - name: Restart firefly
-  shell: 
+  shell:
     cmd: docker restart firefly
 
 - name: Create database
