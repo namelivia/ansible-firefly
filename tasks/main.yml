@@ -61,8 +61,7 @@
       DB_USERNAME: "{{ database_user }}"
       DB_PASSWORD: "{{ database_password }}"
       TZ: "Europe/Madrid"
-      TRUSTED_PROXIES: "**"
-      DISABLE_CSP_HEADER: "true" # Not ideal
+      TRUSTED_PROXIES: "*"
 
 # Restart the container so the configuration changes are picked up
 - name: Restart firefly
