@@ -65,8 +65,9 @@
 
 # Restart the container so the configuration changes are picked up
 - name: Restart firefly
-  shell:
-    cmd: docker restart firefly
+  command: docker restart firefly
+  register: restart_firefly_result
+  changed_when: restart_firefly_result.rc != 0
 
 - name: Create database
   include_role:
